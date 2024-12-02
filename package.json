@@ -18,7 +18,19 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate:create:local": "NODE_ENV=local migrate create --template-file ./src/migrations-utils/template.ts --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\"",
+    "migrate:create:dev": "NODE_ENV=dev migrate create --template-file ./src/migrations-utils/template.ts --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\"",
+    "migrate:create:uat": "NODE_ENV=uat migrate create --template-file ./src/migrations-utils/template.ts --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\"",
+    "migrate:create:prod": "NODE_ENV=prod migrate create --template-file ./src/migrations-utils/template.ts --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\"",
+    "migrate:up:local": "NODE_ENV=local migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" up",
+    "migrate:up:dev": "NODE_ENV=dev migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" up",
+    "migrate:up:uat": "NODE_ENV=uat migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" up",
+    "migrate:up:prod": "NODE_ENV=prod migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" up",
+    "migrate:down:local": "NODE_ENV=local migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" down",
+    "migrate:down:dev": "NODE_ENV=dev migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" down",
+    "migrate:down:uat": "NODE_ENV=uat migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" down",
+    "migrate:down:prod": "NODE_ENV=prod migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" down"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -32,6 +44,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "express-ruid": "^1.1.5",
+    "migrate": "^2.1.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
